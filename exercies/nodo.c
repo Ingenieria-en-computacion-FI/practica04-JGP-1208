@@ -4,41 +4,67 @@
 
 /* Ejercicio 1 */
 Nodo* crearNodo(int valor){
-    // TODO(1): usar malloc
-    return NULL;
+    Nodo *n;
+    n = (Nodo*)malloc(sizeof(Nodo));
+    n -> dato = valor;
+    n -> siguiente = NULL;
+    return n;
 }
 
 /* Ejercicio 2 */
 Nodo* crearArregloNodos(int n){
-    // TODO(2): usar calloc
-    return NULL;
+    Nodo *arreglo;
+    arreglo = (Nodo*)calloc(n, sizeof(Nodo));
+    return arreglo;
 }
 
 /* Ejercicio 3 */
 Nodo* agregarNodo(Nodo* arreglo, int* n, int valor){
-    // TODO(3): usar realloc
-    return NULL;
+    Nodo *nuevoarreglo = (Nodo*)realloc(arreglo, (*n+1)*sizeof(Nodo));
+    return nuevoarreglo;
 }
 
 /* Ejercicio 4 */
 void liberarNodos(Nodo* arreglo, int n){
-    // TODO (4): liberar memoria
+    free(arreglo);
 }
 
 /* Ejercicio 5 */
 Nodo* construirTresNodos(){
-    // TODO(5): crear 3 nodos enlazados manualmente
-    return NULL;
+    Nodo *n1, *n2, *n3;
+    n1 = (Nodo*)malloc(sizeof(Nodo));
+    n2 = (Nodo*)malloc(sizeof(Nodo));
+    n3 = (Nodo*)malloc(sizeof(Nodo));
+    n1 -> dato = 10;
+    n2 -> dato = 20;
+    n3 -> dato = 30;
+    n1 -> siguiente = n2;
+    n2 -> siguiente = n3;
+    n3 -> siguiente = NULL;
+    return n1;
 }
 
 /* Ejercicio 6 */
 int contarNodos(Nodo* inicio){
-    // TODO(6): recorrer nodos
-    return 0;
+    int contador = 1;
+    Nodo *actual = inicio;
+    while (actual -> siguiente != NULL){
+        contador++;
+        actual = actual -> siguiente;
+    }
+    return contador;
 }
 
 /* Ejercicio 7 */
 Nodo* crearNodosPorEntrada(){
-    // TODO(7): leer números y crear nodos dinámicamente
-    return NULL;
+    int n;
+    printf("Cuantos nodos quieres crear? \n");
+    scanf("%d", &n);
+    Nodo *arreglo = (Nodo*)malloc(n*sizeof(Nodo));
+    for (int i = 0; i < n; i++){
+        printf("Ingresa el valor para el nodo %d: ", i+1);
+        scanf("%d", &arreglo[i].dato);
+        arreglo[i].siguiente = NULL;
+    }
+    return arreglo;
 }
